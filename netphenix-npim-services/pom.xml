@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <parent>
+        <groupId>com.netphenix.npim</groupId>
+        <artifactId>netphenix-npim</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.netphenix.npim</groupId>
+    <artifactId>netphenix-npim-services</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    
+    <name>netphenix-npim-services</name>
+    <description>Rest Service for http requests. </description>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.netphenix.npim</groupId>
+            <artifactId>netphenix-npim-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netphenix.npim</groupId>
+            <artifactId>netphenix-npim-connect</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>

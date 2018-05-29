@@ -1,0 +1,647 @@
+<style>
+    .select2 > .select2-choice.ui-select-match {
+        height: 29px;
+    }
+    .selectize-control > .selectize-dropdown {
+        top: 36px;
+    }
+    .select-box {
+        background: #fff;
+        position: relative;
+        z-index: 1;
+    }
+    .alert-info.positioned {
+        margin-top: 1em;
+        position: relative;
+        z-index: 10000;
+    }
+    .product-icon {
+        width: 70px;
+        margin: 0px auto;
+    }
+    .admin-fnt {
+        font-size: 12px;
+        padding-top: 20px;
+        padding-left:5px;
+        text-transform: capitalize;
+    }
+/*    .daterangepicker.dropdown-menu.ltr.show-calendar.opensright {
+        display: none !important;
+    }*/
+    .logout{
+        padding-left: 20px;
+    }
+    .navbar-nav > li, .navbar-nav > li > a{
+        height: auto! important; 
+    }
+    .themeSettings{
+        min-width: 450px;
+    }
+    .chartColor {
+        width:241px !important;
+    }
+    .form-control.chartColor::placeholder {
+        text-align: right;
+    }
+    .colorText {
+        width: 305px !important;
+    }
+    .col-sm-3.control-label{
+        font-size: medium;
+        padding-left: 12px;
+        padding-top: 4px;
+    }
+    .colorpicker .sp-replacer {
+        width: 10% !important;
+        padding: 0px;
+        border: none;
+        height: 38px;
+    }
+    .colorpicker .sp-preview {
+        width: 98% !important;
+        height: 38px;
+    }
+    .colorpicker .sp-dd {
+        display:none;
+    }
+    .lanLabel-btn{
+        margin-top: 0px !important;
+    }
+    .lanLabelColor{
+        background-color: #fff;
+        color: #9d9fa2;
+    }
+    .datasource{
+        color: #0275d8;
+    }
+    .dropdown-dealer{
+        margin-top: 20px;
+        padding: 0px;
+        margin-right: 18px;
+    }
+
+    .triangle:after {
+        border-bottom-color: #fff;
+        border-top-width: 0;
+        top: 1px;
+        margin-left: -10px;
+    }
+    .triangle:after {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border: solid 10px;
+        border-color: transparent;
+        position: absolute;
+    }
+
+    .dropdown-dealer a {
+        color: rgba(90, 113, 122, 0.57);
+        font-family: 'proxima_nova_ltsemibold';
+        font-size: 13px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .ns-popover-tooltip-theme .ns-popover-tooltip {
+        box-sizing: border-box;
+        border: solid 1px #d2d2d2;
+        border-radius: 3px;
+        background-color: #fff;
+        padding: 0.5625rem 0.875rem;
+        max-width: 28rem;
+        font-size: 12px;
+        -webkit-box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        top: 47.5667px !important;
+    }
+    .calendarOuter {
+        cursor: pointer;
+    }
+    .calendarInner{
+        border: 1px solid #D2D8DB;
+        padding: 4px 13px 3px 11px;
+    }
+    .calendarStartdate{
+        padding-right: 5px;
+        margin-right: 13px;
+        margin-left: 13px;
+    }
+    .calendarEnddate{
+        padding-left: 5px;
+        padding-right: 4px;
+        margin-right: 13px;
+        margin-left: 13px;
+    }
+    .custom-dynamic-popover-class-header > .popover-inner{
+        width:105px;
+    }
+
+    .custom-dynamic-popover-class-header div.arrow{
+        left:34.5px !important;
+    }  
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 45px;
+        height: 22px;
+    }
+
+    .switch input {display:none;}
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #E6E6E6;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;.switch {
+            position: relative;
+            display: inline-block;
+            width: 45px;
+            height: 22px;
+        }
+        .switch input {
+            display: none;
+        }
+        left: 4px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #83A958;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 28px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+    .date-header-picker {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .date-picker-footer {
+        padding: 10px 2px 6px 2px;
+        text-align: right;
+        border-top: 1px solid #e5e5e5;
+        margin: 10px 0px 0px 0px;
+    }
+</style>
+<div class="fixed-navbar" ng-controller="HeaderController">
+    <div id="logo">
+        <span>
+            <img src="static/img/logos/dashience-logo.jpg" width="80" />
+        </span>
+        <!--<img src="../img/logos/border.png" alt=""  width="1" height="50"/>-->
+    </div>
+
+    <div id="logo">
+        <span>
+            <img class="img-responsive img-thumbnail client-logo" ng-src="{{accountLogo}}" />
+            <!--<img src="static/img/logos/deeta-logo.png" width="100" />-->
+        </span>
+    </div>
+
+    <nav role="navigation">
+        <div class="small-logo">
+            <span>
+                <img src="static/img/logos/dashience-logo.jpg" width="80" />
+            </span>
+        </div>
+        <div class="small-logo">
+            <span>
+                <img class="img-responsive img-thumbnail client-logo" ng-src="{{accountLogo}}" width="100" />
+                <!--<img src="static/img/logos/deeta-logo.png" width="100" />-->
+            </span>
+        </div>
+        <nav class = "navbar-default" role = "navigation">
+            <!--            <div class = "navbar-header" id="animations">
+                            <button class="navbar-toggle"ng-click="showLeft($event)">Show Left Menu!</button>
+            
+                            <menu visible="leftVisible" alignment="left">
+                                <menu-item hash="first-page">First Page</menu-item>
+                                <menu-item hash="second-page">Second Page</menu-item>
+                                <menu-item hash="third-page">Third Page</menu-item>
+                            </menu>
+                        </div>-->
+            <!--            <div class = "navbar-header" id="animations">
+                            <button type="button" class="navbar-toggle mobile-menu-toggle" data-animation="am-slide-left" data-placement="left" bs-aside="aside">
+                                <span class = "sr-only">Toggle navigation</span>
+                                <span class = "icon-bar"></span>
+                                <span class = "icon-bar"></span>
+                                <span class = "icon-bar"></span><br>
+                            </button>
+                        </div>-->
+        </nav>
+
+        <!--        <div class="mobile-menu">
+                    <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <div class="collapse mobile-navbar" id="mobile-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="admin/user/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>-->
+        <!--        <nav class = "navbar-default" role = "navigation">
+                    <div class = "navbar-header">
+                        <button type = "button" class = "navbar-toggle mobile-menu-toggle" data-toggle = "collapse" data-target = "#mobile-collapse">                    
+                            <span class = "sr-only">Toggle navigation</span>
+                            <span class = "icon-bar"></span>
+                            <span class = "icon-bar"></span>
+                            <span class = "icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class = "collapse mobile-navbar" id="mobile-collapse">
+        
+                        <ul class = "nav navbar-nav">
+                                                <li><a href = "#">iOS</a></li>
+                                                <li><a href = "#">SVN</a></li>
+                                                <li class = "dropdown">
+                                                    <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+                                                        Java 
+                                                        <b class = "caret"></b>
+                                                    </a>
+                                                    <ul class = "dropdown-menu">
+                                                        <li><a href = "#">jmeter</a></li>
+                                                        <li><a href = "#">EJB</a></li>
+                                                        <li><a href = "#">Jasper Report</a></li>
+                                                        <li><a href = "#">Separated link</a></li>
+                                                        <li><a href = "#">One more separated link</a></li>
+                                                    </ul>
+                                                </li>
+        
+                                                <li class="dropdown" id="daterange-btn">
+                                                    <a id="daterange-btn">
+                                                    <a class="date-border">
+                                                        {{firstDate| date: "MM/dd/yyyy"}} - {{lastDate| date: "MM/dd/yyyy"}} <i class="fa fa-caret-down"></i>
+                                                    </a> 
+                                                    </a>
+                                                </li>
+                            <li class="dropdown" id="daterange-b">
+                                <a class="date-border">
+                                    {{firstDate| date: "MM/dd/yyyy"}} - {{lastDate| date: "MM/dd/yyyy"}} <i class="fa fa-caret-down"></i>
+                                </a>
+                            </li>
+                            <li class="col-lg-3 icon-dash mobile-menus dropdown"  >
+                                <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+                                    Products 
+                                    <b class = "caret"></b>
+                                </a>
+                                <ul class="dropdown-menu active" ng-repeat="product in products| orderBy:'productOrder'" ng-if="product.showProduct == 1" >
+                                    <li ng-click="setParamsProduct(product)"><a>{{product.productName}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+                                    Report 
+                                    <b class = "caret"></b>
+                                </a>
+                                <ul class = "dropdown-menu">
+                                    <li ng-if="permission.createDataSource === true;">                     
+                                        <a class="product-dashboard-icon" ng-click="setParams()">
+                                            <span data-ui-sref="index.dataSource({accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate})">
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li ng-if="permission.createDataSet === true;">
+                                        <a class="product-dashboard-icon" ng-click="setParams()">
+                                            <span data-ui-sref="index.dataSet({accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate})">
+                                                Data Sets
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li ng-if="isAdmin === 'admin'">
+                                        <a class="product-dashboard-icon" ng-click="setParams()">
+                                            <span data-ui-sref="index.agency({accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate})">
+                                                Agency
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li ng-if="permission.createAccount === true;">
+                                        <a class="product-dashboard-icon" ng-click="setParams()">
+                                            <span data-ui-sref="index.account({accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate})">
+                                                Account
+                                            </span>
+                                        </a>
+                                    </li>  
+                                    <li ng-if="permission.createUser === true;">
+                                        <a class="product-dashboard-icon" ng-click="setParams()">
+                                            <span data-ui-sref="index.user({accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate})">
+                                                Users
+                                            </span>
+                                        </a>
+                                    </li>                                                              
+                                </ul>
+                            </li>
+        
+                            <li><a href="admin/user/logout">Logout</a></li>
+                        </ul>
+                    </div>
+        
+                </nav>-->
+
+
+        <div class="navbar-right">
+            <ul class="nav navbar-nav no-borders">
+                <!--                <li class="dropdown" ng-if="tempLan && tempLan != 'en'">-->
+                <li class="dropdown go" ng-if="tempLan && tempLan != 'en'">
+                    <h4 class="lanLabel-btn"><span class="label label-default lanLabelColor" ng-click="changeAgencyLang(showLangBtn)">{{showLangBtn| filterLanguage}}</span></h4>
+                </li>
+                <!--<button class="btn btn-default" ng-click="changeAgencyLang(showLangBtn)">{{showLangBtn| filterLanguage}}</button>-->
+                <li class="dropdown dropdown-dealer picker-1">
+                    <span ns-popover="" 
+                          ns-popover-template="close" 
+                          ns-popover-trigger="click" 
+                          ns-popover-theme="ns-popover-tooltip-theme" 
+                          ns-popover-timeout="2000" 
+                          ns-popover-hide-on-inside-click="false" 
+                          ns-popover-hide-on-outside-click="false" 
+                          ns-popover-hide-on-button-click="true">
+                        <a class="calendarOuter">
+                            <div class="calendarInner">
+                                <i class="fa fa-calendar calendarIcon" id="date"></i>
+                                <span class="date-border">
+                                    <span class="calendarStartdate">
+                                        {{firstDate| date: "MM/dd/yyyy"}}
+                                    </span> - <span class="calendarEnddate">{{lastDate| date: "MM/dd/yyyy"}}</span> 
+                                    <!--<i class="fa fa-caret-down"></i>-->
+                                </span>
+                            </div>                                    
+                        </a> 
+                    </span>
+                    <script type="text/ng-template" id="close">
+                        <div class = "triangle"> </div>
+                        <div class="ns-popover-tooltip" style="height:auto !important;overflow-y:unset !important;width:281px">
+                       
+                        <div class="row">
+                        <div class="col-md-12 date-header-picker">                                    
+                        <span id="daterange-btn" class="calendarOuter">
+                        <div class="calendarInner" style="padding:4px">
+                        <i class="fa fa-calendar calendarIcon" id="date"></i>
+                        <span class="date-border" style="color: #000;">
+                        <span class="calendarStartdate">
+                        {{firstDate| date: "MM/dd/yyyy"}}
+                        </span> - <span class="calendarEnddate">{{lastDate| date: "MM/dd/yyyy"}}</span> 
+
+                        </span>
+                        </div>                                    
+                        </span>
+                        </div>
+                        </div>
+
+                        <span>
+                        <label style="font-size: 14px;margin-bottom: 5px !important;">Compare</label></span>
+                        <span class="pull-right">
+                        <label class="switch" for="compareDateRange">
+                        <input id="compareDateRange" 
+                        type="checkbox"  
+                        ng-model="compareDateRangeType" 
+                        ng-click="unCheckButton(compareDateRangeType)"
+                        ng-checked="selectedTablesType == 'compareOn'">
+                        <div class="slider round"></div>
+                        </label>
+                        </span>
+                        <div class="row">
+                        <div class="col-md-12">
+                        <span id="" class="calendarOuter">
+                        <div ng-show="compareDateRangeType == true" class="calendarInner" id="compare-daterange-btn" style="padding: 4px">
+                        <i class="fa fa-calendar calendarIcon" id="date"></i>
+                        <span class="date-border" style="color: #000;">
+                        <span class="calendarStartdate">{{compare_startDate| date: "MM/dd/yyyy"}}</span> - <span class="calendarEnddate">{{compare_endDate| date: "MM/dd/yyyy"}}</span>
+                        </span>
+                        </div>
+                        </span>
+
+                        <div class="row col-md-12 date-picker-footer">
+                        <div class="pull-left">
+                        <button type="button" class="btn btn-default btn-xs" ng-click="hidePopover()">Cancel</button>
+                          </div>
+                        <div class="pull-right">
+                         <button  class="btn btn-success btn-xs" ng-click="selectTableOptions(compareDateRangeType,true); hidePopover()">Submit</button>
+                        </div>
+                        </div>                                    
+                        </div>
+                        </div>
+                    </script>
+                </li>
+
+                <!--</li>-->
+                <!--                <li class="dropdown">
+                                    <a class="pull-right" id="daterange-btn">
+                                        <span class="date-border">
+                                            {{firstDate| date: "MM/dd/yyyy"}} - {{lastDate| date: "MM/dd/yyyy"}} <i class="fa fa-caret-down"></i>
+                                        </span> 
+                                    </a>
+                                </li>-->
+                <!--<li class="dropdown go"><span class="label label-success" ng-click="loadNewUrl()" translate>Go</span></li>-->
+
+
+                <li class="dropdown">
+                    <form role="search" class="navbar-form-custom" method="post" action="#">
+                        <div class="form-group">
+                            <ui-select ng-model="selectAccount.selected" on-select="getAccountId(selectAccount.selected)" theme="selectize" ng-disabled="disabled" style="width:180px;">
+                                <ui-select-match placeholder="{{'Select Account'|translate}}">{{$select.selected.accountName}}</ui-select-match>
+                                <ui-select-choices repeat="account in accounts | filter: $select.search">
+                                    <span ng-bind-html="account.accountId.accountName | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a title="{{'Menu'|translate}}" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="pe-7s-keypad" ></i>
+                    </a>
+                    <div class="dropdown-menu hdropdown bigmenu animated flipInX">
+                        <div class="col-lg-12 row">
+                            <div ng-repeat="product in products| orderBy:'productOrder'">
+                                <ul class="col-lg-3 icon-dash"  ng-if="product.showProduct == 1">
+                                    <li class="product-dashboard-icon">
+                                        <a class="active" ng-click="setParamsProduct(product)">
+                                            <!--data-ui-sref="index.dashboard.widget({accountId: accountId, accountName: accountName, productId: product.id, tabId: tabId, startDate: startDate, endDate: endDate})">-->
+                                            <img class="product-icon img-responsive" ng-src="{{product.icon}}"/> 
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clear">
+                                <div ng-if="permission.createDataSource === true;">
+                                    <ul class="col-lg-3 icon-dash">                                    
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.dataSource({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-database datasource" aria-hidden="true"></i> <h5 translate>DataSource</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div ng-if="permission.createDataSet === true;">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.dataSet({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-dashcube text-success"></i> <h5 translate>DataSets</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div ng-if="isAdmin === 'admin'">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.agency({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-cog text-warning"></i> <h5 translate>Agency</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div ng-if="permission.createAccount === true;">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.account({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-cog text-warning"></i> <h5 translate>Account</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>  
+                                <div ng-if="permission.createUser === true;">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.user({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-users text-info"></i> <h5 translate>Users</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>                                                              
+                            </div>
+                            <div class="clear">
+                                <div ng-if="permission.viewReport === true;">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.report.reports({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-file-archive-o text-info" aria-hidden="true"></i> <h5 translate> Reports</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>                                                    
+                                <div ng-if="permission.scheduleReport === true;">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.schedulerIndex.scheduler({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-clock-o text-danger" aria-hidden="true"></i> <h5 translate> Scheduler</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div ng-if="isAdmin === 'admin'">     
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.fieldSettings({lan: lan, accountId: accountId, accountName: accountName, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-cog text-danger" aria-hidden="true"></i> <h5 translate> Field Settings</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div ng-if="isAdmin !== 'admin'">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.viewFavouritesWidget({lan: lan, accountId: accountId, accountName: accountName, productId: 0, favouriteName: 'Favourite', startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-heart text-info" aria-hidden="true" style="font-size: 30px !important;"></i> <h5 translate>Favorites</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.oauth({lan: lan, accountId: accountId,accountName: accountName, productId: 0, favouriteName: 'Favourite', startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-lock text-info" aria-hidden="true" style="font-size: 30px !important;"></i> <h5 translate>OAuth</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div ng-if="isAdmin === 'admin'">
+                                    <ul class="col-lg-3 icon-dash"> 
+                                        <li class="product-dashboard-icon" ng-click="setParams()">
+                                            <a data-ui-sref="index.settings({lan: lan, startDate: startDate, endDate: endDate, compareStatus: compareStatus, compareStartDate:compareStartDate, compareEndDate:compareEndDate})">
+                                                <i class="fa fa-gear text-info" aria-hidden="true" style="font-size: 30px !important;"></i> <h5 translate>Settings</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown" ng-if="isAdmin !== 'admin'">
+                    <a  title="{{'Settings'|translate}}" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                    <div class="dropdown-menu themeSettings">
+                        <!--                        <div class="form-group">
+                                                    <label class="control-label col-md-3">Theme </label>
+                                                    <div class="col-md-9 ">
+                                                        <select class="col-md-12 inside" ng-change="themeDropDownChange(theme)" ng-model="theme" ng-options="theme.name for theme in themes track by theme.name">
+                                                        </select>
+                                                    </div>
+                                                </div>-->
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" translate>ChartColor</label>
+                            <div class="col-md-9">
+                                <div class="input-group colorText">
+                                    <input class="form-control chartColor" type="text" ng-model="chartColor.optionValue" placeholder="{{'color with , seperate'| translate}}">
+                                    <a class="colorpicker" title="{{'Color Picker'|translate}}" ui-colorpicker ng-model="color" ng-change="selectChartColor(color, chartColor)"></a>
+                                    <a class="input-group-addon btn-default btn-sm" title="{{'Save Color'|translate}}" ng-click="saveChartColor(chartColor)"><i class="fa fa-save"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--                <li class="dropdown">
+                                    <a href="login.html">
+                                        <i class="pe-7s-upload pe-rotate-90"></i>
+                                    </a>
+                                </li>-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><span class="admin-fnt">{{userName}} / {{agencyId.agencyName}}</span></a>
+                    <div class="dropdown-menu" ng-click="userLogout()" style="cursor:pointer">
+                        <a class="logout" translate>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
