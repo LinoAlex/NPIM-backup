@@ -8,7 +8,6 @@ package com.netphenix.npim.connect.connection;
 import com.netphenix.npim.connect.connection.Api.GANPIMConnect;
 import com.netphenix.npim.connect.connection.Api.LinkedInConnect;
 import java.util.Map;
-import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
